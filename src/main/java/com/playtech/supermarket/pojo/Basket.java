@@ -1,9 +1,14 @@
 package com.playtech.supermarket.pojo;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Basket {
     Map<String, Integer> products;
+
+    public Basket(){
+        products = new HashMap<>();
+    }
 
     public Map<String, Integer> getProducts() {
         return products;

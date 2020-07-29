@@ -15,7 +15,7 @@ public class TestUtil {
     }
 
     public static Basket createBasketWithProducts(String[] productNames) {
-        Basket basketWithApple = new Basket();
+        Basket basket = new Basket();
         Map<String, Integer> products = new HashMap<>();
         for (String productName: productNames) {
             Integer quantity = products.get(productName);
@@ -25,8 +25,8 @@ public class TestUtil {
                 products.put(productName, quantity + 1);
             }
         }
-        basketWithApple.setProducts(products);
-        return basketWithApple;
+        basket.setProducts(products);
+        return basket;
     }
 
     public static Basket getBasketWithAppleMilk() {
