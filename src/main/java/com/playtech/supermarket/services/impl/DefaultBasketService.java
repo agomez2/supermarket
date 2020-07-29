@@ -7,11 +7,7 @@ import java.util.Map;
 
 public class DefaultBasketService implements BasketService {
 
-    public String printTotals(Basket basket) {
-
-        return null;
-    }
-
+    @Override
     public Basket addToBasket(String item, Basket basket) {
         Map<String, Integer> products = basket.getProducts();
         Integer quantity = products.get(item);

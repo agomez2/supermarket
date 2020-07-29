@@ -2,6 +2,7 @@ package com.playtech.supermarket;
 
 import com.playtech.supermarket.pojo.Basket;
 import com.playtech.supermarket.services.BasketService;
+import com.playtech.supermarket.services.TotalService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static com.playtech.supermarket.TestUtil.*;
+import static com.playtech.supermarket.util.TestUtil.*;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
@@ -26,6 +27,9 @@ public class AppTest
 
     @Mock
     BasketService mockedBasketService;
+
+    @Mock
+    TotalService mockedTotalService;
 
     @InjectMocks
     App testObj = new App();
@@ -40,6 +44,7 @@ public class AppTest
     public void restoreStreams() {
         System.setOut(originalOut);
     }
+
 
     @Test
     public void testOutputStream()
@@ -64,7 +69,7 @@ public class AppTest
         Basket basketWithAppleMilkBread = getBasketWithAppleMilkBread();
         when(mockedBasketService.addToBasket(eq(BREAD), eq(basketWithAppleMilk))).thenReturn(basketWithAppleMilkBread);
 
-        when(mockedBasketService.printTotals(eq(basketWithAppleMilkBread))).thenReturn(mockedOutput);
+        when(mockedTotalService.printTotals(eq(basketWithAppleMilkBread))).thenReturn(mockedOutput);
 
 
         testObj.calculate(input);

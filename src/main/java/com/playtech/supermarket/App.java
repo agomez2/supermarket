@@ -2,7 +2,9 @@ package com.playtech.supermarket;
 
 import com.playtech.supermarket.pojo.Basket;
 import com.playtech.supermarket.services.BasketService;
+import com.playtech.supermarket.services.TotalService;
 import com.playtech.supermarket.services.impl.DefaultBasketService;
+import com.playtech.supermarket.services.impl.DefaultTotalService;
 
 /**
  * Hello world!
@@ -15,6 +17,8 @@ public class App
     //@Resource
     private BasketService basketService;
 
+    private TotalService totalService;
+
 
     void calculate( String[] args ){
         Basket basket = new Basket();
@@ -22,14 +26,24 @@ public class App
             basket = getBasketService().addToBasket(item, basket);
         }
 
-        System.out.println( getBasketService().printTotals(basket) );
+        System.out.println( getTotalService().printTotals(basket) );
     }
+
 
     public static void main( String[] args )
     {
         App app = new App();
         app.setBasketService(new DefaultBasketService());
+        app.setTotalService(new DefaultTotalService());
         app.calculate(args);
+    }
+
+    private TotalService getTotalService() {
+        return totalService;
+    }
+
+    private void setTotalService(DefaultTotalService totalService) {
+        this.totalService = totalService;
     }
 
     public BasketService getBasketService() {

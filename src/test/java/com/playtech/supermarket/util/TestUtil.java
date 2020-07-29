@@ -1,4 +1,4 @@
-package com.playtech.supermarket;
+package com.playtech.supermarket.util;
 
 import com.playtech.supermarket.pojo.Basket;
 
