@@ -16,8 +16,6 @@ public class DefaultBasketServiceTest {
     DefaultBasketService testObj;
 
 
-
-
     @Test
     public void addToBasket_BasketIsEmptyAndWeAddOneProduct_ShouldEndUpWithOneProduct(){
         Basket basket = new Basket();

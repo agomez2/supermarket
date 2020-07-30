@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 public class DefaultTotalsServiceTest {
 
     public static final String GBP = "GBP";
-    private final MonetaryAmountFactory<?> defaultAmountFactory = Monetary.getDefaultAmountFactory();
+    private static final MonetaryAmountFactory<?> defaultAmountFactory = Monetary.getDefaultAmountFactory();
 
     @InjectMocks
     DefaultTotalsService testObj;
@@ -35,7 +35,7 @@ public class DefaultTotalsServiceTest {
         assertEquals(expectedOutput.trim(), actualOutput.trim());
     }
 
-    private Totals createExampleTotals() {
+    public static Totals createExampleTotals() {
         Totals totals = new Totals();
 
         totals.setSubTotal(defaultAmountFactory
@@ -57,14 +57,14 @@ public class DefaultTotalsServiceTest {
         return totals;
     }
 
-    private Set<Discount> createExampleDiscounts() {
+    private static Set<Discount> createExampleDiscounts() {
         Set<Discount> discounts = new HashSet<>();
         Discount discount = createExampleDiscount();
         discounts.add(discount);
         return discounts;
     }
 
-    private Discount createExampleDiscount() {
+    private static Discount createExampleDiscount() {
         Discount discount = new Discount();
         discount.setAmount(defaultAmountFactory
                 .setCurrency(GBP)
