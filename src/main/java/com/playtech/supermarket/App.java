@@ -1,10 +1,12 @@
 package com.playtech.supermarket;
 
 import com.playtech.supermarket.pojo.Basket;
+import com.playtech.supermarket.pojo.Totals;
 import com.playtech.supermarket.services.BasketService;
-import com.playtech.supermarket.services.TotalService;
+import com.playtech.supermarket.services.CalculationService;
+import com.playtech.supermarket.services.TotalsService;
 import com.playtech.supermarket.services.impl.DefaultBasketService;
-import com.playtech.supermarket.services.impl.DefaultTotalService;
+import com.playtech.supermarket.services.impl.DefaultTotalsService;
 
 /**
  * Hello world!
@@ -17,7 +19,9 @@ public class App
     //@Resource
     private BasketService basketService;
 
-    private TotalService totalService;
+    private TotalsService totalsService;
+
+    private CalculationService calculationService;
 
 
     void calculate( String[] args ){
@@ -25,8 +29,10 @@ public class App
         for (String item : args) {
             basket = getBasketService().addToBasket(item, basket);
         }
+        Totals totals = getCalculationService().calculateTotals(basket);
 
-        System.out.println( getTotalService().printTotals(basket) );
+        //This should be sent to a logger, really.
+        System.out.println( totals );
     }
 
 
@@ -34,16 +40,16 @@ public class App
     {
         App app = new App();
         app.setBasketService(new DefaultBasketService());
-        app.setTotalService(new DefaultTotalService());
+        app.setTotalService(new DefaultTotalsService());
         app.calculate(args);
     }
 
-    private TotalService getTotalService() {
-        return totalService;
+    private TotalsService getTotalService() {
+        return totalsService;
     }
 
-    private void setTotalService(DefaultTotalService totalService) {
-        this.totalService = totalService;
+    private void setTotalService(DefaultTotalsService totalService) {
+        this.totalsService = totalService;
     }
 
     public BasketService getBasketService() {
@@ -52,5 +58,21 @@ public class App
 
     public void setBasketService(BasketService basketService) {
         this.basketService = basketService;
+    }
+
+    public TotalsService getTotalsService() {
+        return totalsService;
+    }
+
+    public void setTotalsService(TotalsService totalsService) {
+        this.totalsService = totalsService;
+    }
+
+    public CalculationService getCalculationService() {
+        return calculationService;
+    }
+
+    public void setCalculationService(CalculationService calculationService) {
+        this.calculationService = calculationService;
     }
 }
