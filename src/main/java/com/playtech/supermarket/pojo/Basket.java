@@ -32,4 +32,11 @@ public class Basket {
     public int hashCode() {
         return products != null ? products.hashCode() : 0;
     }
+
+    @Override
+    public String toString() {
+        return "Basket{" +
+                "products=" + products +
+                '}';
+    }
 }

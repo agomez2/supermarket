@@ -10,7 +10,7 @@ public class DefaultProductDao implements ProductDao {
 
     @Override
     public MonetaryAmount getPrice(String productName) {
-        
+        int price = 0;
         return createMonetaryAmount(price);
     }
 }

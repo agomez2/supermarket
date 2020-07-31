@@ -32,7 +32,7 @@ public class DefaultCalculationService implements CalculationService {
 
         totals.setSubTotal(calculateSubtotal(basket));
         totals.setDiscounts(discounts);
-        totals.setTotal(subtotal.subtract(totalsDiscounts));
+        totals.setTotal(subtotal.add(totalsDiscounts));
 
         return totals;
     }
@@ -47,9 +47,9 @@ public class DefaultCalculationService implements CalculationService {
     private MonetaryAmount calculateSubtotal(Basket basket) {
         MonetaryAmount subTotal = createMonetaryAmount(0);
         for (Map.Entry<String, Integer> entry : basket.getProducts().entrySet()){
-            subTotal.add(productDao.getPrice(entry.getKey()));
+            subTotal = subTotal.add(productDao.getPrice(entry.getKey()));
         }
-
+        return subTotal;
     }
 
 

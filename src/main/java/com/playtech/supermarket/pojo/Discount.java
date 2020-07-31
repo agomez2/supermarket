@@ -40,4 +40,12 @@ public class Discount {
         result = 31 * result + (amount != null ? amount.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Discount{" +
+                "description='" + description + '\'' +
+                ", amount=" + amount +
+                '}';
+    }
 }

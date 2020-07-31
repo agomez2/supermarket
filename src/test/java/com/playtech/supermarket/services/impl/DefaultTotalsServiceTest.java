@@ -57,7 +57,7 @@ public class DefaultTotalsServiceTest {
         return totals;
     }
 
-    private static Set<Discount> createExampleDiscounts() {
+    public static Set<Discount> createExampleDiscounts() {
         Set<Discount> discounts = new HashSet<>();
         Discount discount = createExampleDiscount();
         discounts.add(discount);

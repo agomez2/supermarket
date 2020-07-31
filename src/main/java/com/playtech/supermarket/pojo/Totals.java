@@ -51,4 +51,13 @@ public class Totals {
         result = 31 * result + (total != null ? total.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Totals{" +
+                "subTotal=" + subTotal +
+                ", discounts=" + discounts +
+                ", total=" + total +
+                '}';
+    }
 }
