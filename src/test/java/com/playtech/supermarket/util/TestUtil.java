@@ -10,7 +10,7 @@ public class TestUtil {
     public static final String MILK = "Milk";
     public static final String BREAD = "Bread";
 
-    public static Basket getBasketWithAppleMilkBread() {
+    public static Basket createBasketWithAppleMilkBread() {
         return createBasketWithProducts(new String[]{APPLE, MILK, BREAD});
     }
 

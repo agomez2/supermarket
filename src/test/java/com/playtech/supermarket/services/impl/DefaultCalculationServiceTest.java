@@ -41,7 +41,7 @@ public class DefaultCalculationServiceTest {
     //This should go into an integration test and in this file we should add a test like the one
     // below but mocking all the file functionality so only the dao is tested
     public void calculateTotals_IntegrationTestBasketContainsAppleMilkBreadAndApplesAre10PerCentOff_Totals_should_BeOk(){
-        Basket basket = getBasketWithAppleMilkBread();
+        Basket basket = createBasketWithAppleMilkBread();
         Totals expectedTotals = createExampleTotals();
         Set<Discount> discounts = createExampleDiscounts();
         when(discountService.applyDiscounts(basket)).thenReturn(discounts);

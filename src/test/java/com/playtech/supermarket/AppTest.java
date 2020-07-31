@@ -66,7 +66,7 @@ public class AppTest
         when(mockedBasketService.addToBasket(eq(APPLE), eq(new Basket()))).thenReturn(basketWithApple);
         Basket basketWithAppleMilk = getBasketWithAppleMilk();
         when(mockedBasketService.addToBasket(eq(MILK), eq(basketWithApple))).thenReturn(basketWithAppleMilk);
-        Basket basketWithAppleMilkBread = getBasketWithAppleMilkBread();
+        Basket basketWithAppleMilkBread = createBasketWithAppleMilkBread();
         when(mockedBasketService.addToBasket(eq(BREAD), eq(basketWithAppleMilk))).thenReturn(basketWithAppleMilkBread);
 
         //TODO: Change this to work with totals.

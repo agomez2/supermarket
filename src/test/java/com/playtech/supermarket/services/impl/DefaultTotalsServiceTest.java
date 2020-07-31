@@ -57,6 +57,7 @@ public class DefaultTotalsServiceTest {
         return totals;
     }
 
+    //TODO: Move this to a Util class
     public static Set<Discount> createExampleDiscounts() {
         Set<Discount> discounts = new HashSet<>();
         Discount discount = createExampleDiscount();
