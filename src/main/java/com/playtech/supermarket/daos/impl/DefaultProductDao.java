@@ -4,12 +4,10 @@ import com.opencsv.CSVReader;
 import com.playtech.supermarket.daos.ProductDao;
 
 import javax.money.MonetaryAmount;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -35,7 +33,7 @@ public class DefaultProductDao implements ProductDao {
         return createMonetaryAmount(price);
     }
 
-    private Optional<List<String>> findRow (String productName) {
+    private Optional<List<String>> findRow(String productName) {
         String[] values = null;
         InputStream is = getInputStreamForResource(PRODUCTS_FILE_NAME);
 
@@ -57,7 +55,6 @@ public class DefaultProductDao implements ProductDao {
 
     private InputStream getInputStreamForResource(String resource) {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        InputStream is = classloader.getResourceAsStream(resource);
-        return is;
+        return classloader.getResourceAsStream(resource);
     }
 }

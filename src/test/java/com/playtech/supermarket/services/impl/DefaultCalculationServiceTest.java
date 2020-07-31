@@ -38,8 +38,8 @@ public class DefaultCalculationServiceTest {
 
     @Test
     //This is not really a unit test because it is not mocking the file reading
-    //This should go into an integration test
-    //Below I will do the correct unit test
+    //This should go into an integration test and in this file we should add a test like the one
+    // below but mocking all the file functionality so only the dao is tested
     public void calculateTotals_IntegrationTestBasketContainsAppleMilkBreadAndApplesAre10PerCentOff_Totals_should_BeOk(){
         Basket basket = getBasketWithAppleMilkBread();
         Totals expectedTotals = createExampleTotals();
@@ -56,20 +56,4 @@ public class DefaultCalculationServiceTest {
         assertEquals(expectedTotals, actualTotals);
     }
 
-    @Test
-    public void calculateTotals_BasketContainsAppleMilkBreadAndApplesAre10PerCentOff_Totals_should_BeOk(){
-        Basket basket = getBasketWithAppleMilkBread();
-        Totals expectedTotals = createExampleTotals();
-        Set<Discount> discounts = createExampleDiscounts();
-        when(discountService.applyDiscounts(basket)).thenReturn(discounts);
-
-        when(productDao.getPrice(MILK)).thenReturn(createMonetaryAmount(MILK_PRICE));
-        when(productDao.getPrice(BREAD)).thenReturn(createMonetaryAmount(BREAD_PRICE));
-        when(productDao.getPrice(APPLE)).thenReturn(createMonetaryAmount(APPLE_PRICE));
-        
-
-        Totals actualTotals = testObj.calculateTotals(basket);
-
-        assertEquals(expectedTotals, actualTotals);
-    }
 }
