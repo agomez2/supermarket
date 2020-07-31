@@ -10,6 +10,7 @@ import com.playtech.supermarket.services.DiscountService;
 
 import javax.money.Monetary;
 import javax.money.MonetaryAmount;
+import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Set;
 
@@ -45,7 +46,7 @@ public class DefaultCalculationService implements CalculationService {
     }
 
     private MonetaryAmount calculateSubtotal(Basket basket) {
-        MonetaryAmount subTotal = createMonetaryAmount(0);
+        MonetaryAmount subTotal = createMonetaryAmount(BigDecimal.ZERO);
         for (Map.Entry<String, Integer> entry : basket.getProducts().entrySet()){
             subTotal = subTotal.add(productDao.getPrice(entry.getKey()));
         }
